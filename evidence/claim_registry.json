@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "claims": [
+    {
+      "id": "local_failure_checks",
+      "classification": "MEASURED_LOCAL_RESULT",
+      "value": "23/23",
+      "evidence": "evidence/verified-local/summary.json"
+    },
+    {
+      "id": "source_registry_size",
+      "classification": "IMPLEMENTED_CONFIGURATION",
+      "value": 50,
+      "evidence": "config/sources.json"
+    },
+    {
+      "id": "daily_events",
+      "classification": "DESIGN_TARGET",
+      "value": "10M+ events/day",
+      "evidence": "docs/PERFORMANCE.md"
+    },
+    {
+      "id": "freshness",
+      "classification": "DESIGN_TARGET",
+      "value": "under five minutes",
+      "evidence": "docs/PERFORMANCE.md"
+    },
+    {
+      "id": "aws_production_slo",
+      "classification": "NOT_CLAIMED",
+      "value": "No AWS deployment, production throughput, latency or availability result",
+      "evidence": "README.md"
+    }
+  ]
+}

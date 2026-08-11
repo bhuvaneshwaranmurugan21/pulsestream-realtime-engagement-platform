@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "families": [
+    {"family": "web", "instances": 12, "owner": "growth", "contract": "engagement_event", "lateness_minutes": 15},
+    {"family": "ios", "instances": 8, "owner": "mobile", "contract": "engagement_event", "lateness_minutes": 180},
+    {"family": "android", "instances": 8, "owner": "mobile", "contract": "engagement_event", "lateness_minutes": 180},
+    {"family": "backend", "instances": 10, "owner": "platform", "contract": "engagement_event", "lateness_minutes": 10},
+    {"family": "campaign", "instances": 6, "owner": "marketing", "contract": "engagement_event", "lateness_minutes": 60},
+    {"family": "partner", "instances": 6, "owner": "partnerships", "contract": "engagement_event", "lateness_minutes": 360}
+  ]
+}
+

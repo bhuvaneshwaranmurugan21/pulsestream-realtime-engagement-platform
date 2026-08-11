@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=80,<86"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pulsestream-realtime-engagement-platform"
+version = "1.0.0"
+description = "Manifest-bound event-time streaming and engagement analytics platform"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+pulsestream = "pulsestream.cli:main"
+
+[project.optional-dependencies]
+dev = ["mypy==1.17.1", "pytest==9.0.3", "pytest-cov==6.2.1", "ruff==0.12.8"]
+spark = ["pyspark==3.5.6"]
+aws = ["boto3==1.43.67"]
+analytics = ["dbt-core==1.12.0", "dbt-postgres==1.11.0", "dbt-redshift==1.11.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --cov=pulsestream --cov-report=term-missing --cov-fail-under=90"
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["spark: tests that require a local Spark runtime"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/pulsestream"]

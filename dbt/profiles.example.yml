@@ -1,0 +1,12 @@
+pulsestream:
+  target: ci
+  outputs:
+    ci:
+      type: postgres
+      host: "{{ env_var('DBT_HOST', 'localhost') }}"
+      port: 5432
+      user: "{{ env_var('DBT_USER', 'pulsestream') }}"
+      password: "{{ env_var('DBT_PASSWORD', 'pulsestream') }}"
+      dbname: "{{ env_var('DBT_DATABASE', 'pulsestream') }}"
+      schema: analytics
+      threads: 4

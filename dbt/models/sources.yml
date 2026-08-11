@@ -1,0 +1,22 @@
+version: 2
+sources:
+  - name: lakehouse
+    schema: pulsestream_external
+    tables:
+      - name: curated_event
+      - name: session_version
+      - name: engagement_aggregate
+      - name: correction_exception
+models:
+  - name: stg_engagement_event
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+      - name: user_token
+        tests: [not_null]
+  - name: fct_daily_engagement
+    columns:
+      - name: event_date
+        tests: [not_null]
+      - name: event_type
+        tests: [not_null]

@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "session_gap_minutes": 30,
+  "live_watermark_minutes": 60,
+  "target_file_size_mib": 384,
+  "required_snapshot_tables": [
+    "curated_event",
+    "session_version",
+    "engagement_aggregate",
+    "correction_exception"
+  ]
+}
+

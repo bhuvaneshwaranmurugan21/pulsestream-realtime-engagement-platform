@@ -1,0 +1,26 @@
+name: Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e '.[dev]'
+      - run: ruff check src tests lambdas spark_jobs orchestration scripts
+      - run: ruff format --check src tests lambdas spark_jobs orchestration scripts
+      - run: mypy src/pulsestream
+      - run: pytest -m 'not spark'
+      - run: python scripts/validate_architecture_contract.py
+      - run: python scripts/validate_claim_registry.py

@@ -1,0 +1,133 @@
+{
+  "active_generation": "replay-0001",
+  "checks": [
+    {
+      "detail": "sources=50",
+      "name": "source_registry_expands_to_50",
+      "passed": true
+    },
+    {
+      "detail": "segments=24",
+      "name": "bronze_manifest_is_self_verifying",
+      "passed": true
+    },
+    {
+      "detail": "records=5006",
+      "name": "segment_record_conservation",
+      "passed": true
+    },
+    {
+      "detail": "crash after 777 durable offsets",
+      "name": "checkpoint_crash_was_injected",
+      "passed": true
+    },
+    {
+      "detail": "{'ACCEPTED_LATE': 1, 'ACCEPTED_LIVE': 5000, 'DUPLICATE': 1, 'QUARANTINED': 4}",
+      "name": "raw_outcomes_are_conserved",
+      "passed": true
+    },
+    {
+      "detail": "new_outcomes=0",
+      "name": "restart_is_idempotent",
+      "passed": true
+    },
+    {
+      "detail": "{'ACCEPTED_LATE': 1, 'ACCEPTED_LIVE': 5000, 'DUPLICATE': 1, 'QUARANTINED': 4}",
+      "name": "exact_duplicate_detected",
+      "passed": true
+    },
+    {
+      "detail": "{'ACCEPTED_LATE': 1, 'ACCEPTED_LIVE': 5000, 'DUPLICATE': 1, 'QUARANTINED': 4}",
+      "name": "invalid_payloads_quarantined",
+      "passed": true
+    },
+    {
+      "detail": "{'ACCEPTED_LATE': 1, 'ACCEPTED_LIVE': 5000, 'DUPLICATE': 1, 'QUARANTINED': 4}",
+      "name": "late_event_is_explicit",
+      "passed": true
+    },
+    {
+      "detail": "{'curated_events': 5000, 'sessions': 4864, 'aggregates': 5, 'open_corrections': 1, 'late_events_included': 0}",
+      "name": "late_event_excluded_from_live",
+      "passed": true
+    },
+    {
+      "detail": "open=1",
+      "name": "correction_open_after_live",
+      "passed": true
+    },
+    {
+      "detail": "live-0001",
+      "name": "live_publication_selected",
+      "passed": true
+    },
+    {
+      "detail": "conditional parent mismatch",
+      "name": "stale_generation_rejected",
+      "passed": true
+    },
+    {
+      "detail": "replay-0001",
+      "name": "stale_generation_cannot_move_pointer",
+      "passed": true
+    },
+    {
+      "detail": "{'curated_events': 5001, 'sessions': 4865, 'aggregates': 6, 'open_corrections': 0, 'late_events_included': 1}",
+      "name": "replay_includes_late_event",
+      "passed": true
+    },
+    {
+      "detail": "{'RESOLVED': 1}",
+      "name": "replay_resolves_exception",
+      "passed": true
+    },
+    {
+      "detail": "replay-0001",
+      "name": "replay_becomes_active_bundle",
+      "passed": true
+    },
+    {
+      "detail": "snapshots=4",
+      "name": "snapshot_bundle_is_complete",
+      "passed": true
+    },
+    {
+      "detail": "live=94a0d3059e46 replay=3d93fa784820",
+      "name": "live_and_replay_are_distinct",
+      "passed": true
+    },
+    {
+      "detail": "1efef27bc7761cab4810bdfdfa2d84f9f316a22b9cadabfc6dc90293f64d024f",
+      "name": "manifest_binds_implementation",
+      "passed": true
+    },
+    {
+      "detail": "5046c2c384bca8b532ef4d7a9ed7d56bb52e9ac0efccea8bd38f63e1d8b7fc79",
+      "name": "manifest_binds_source_manifest",
+      "passed": true
+    },
+    {
+      "detail": "ac7996c9a2bdca34b9b8fec442073177ec579a1446bf73dbe88fed64a69e98e9",
+      "name": "manifest_binds_contract",
+      "passed": true
+    },
+    {
+      "detail": "b7974fb80b912a558f83227fcc8eaa693e69253dfa25e838761417564ee7a1da",
+      "name": "manifest_binds_rules",
+      "passed": true
+    }
+  ],
+  "classification": "MEASURED_LOCAL_RESULT",
+  "evidence_boundary": "Synthetic local execution validates semantics and failure recovery; it does not claim AWS deployment, production throughput, production latency or production SLOs.",
+  "failed": 0,
+  "ingestion": {
+    "ACCEPTED_LATE": 1,
+    "ACCEPTED_LIVE": 5000,
+    "DUPLICATE": 1,
+    "QUARANTINED": 4
+  },
+  "live_manifest_sha256": "94a0d3059e46b9f3b657afd054b9ec741f79575f96cb03e69cf103ab2316797f",
+  "passed": 23,
+  "replay_manifest_sha256": "3d93fa7848206f77f2c3ef07920ebff25babd8eb815170a80e31fb898c451295",
+  "total": 23
+}

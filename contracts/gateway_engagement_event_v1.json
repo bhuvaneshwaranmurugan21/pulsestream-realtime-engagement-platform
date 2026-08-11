@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pulsestream/gateway-engagement-event/1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_id", "source_id", "user_token", "event_type", "event_time", "arrival_time", "consent_state"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "event_id": {"type": "string", "pattern": "^[A-Za-z0-9._:-]{1,128}$"},
+    "source_id": {"type": "string", "pattern": "^[A-Za-z0-9._:-]{1,128}$"},
+    "user_token": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "event_type": {"enum": ["page_view", "search", "product_view", "add_to_cart", "checkout"]},
+    "event_time": {"type": "string", "format": "date-time"},
+    "arrival_time": {"type": "string", "format": "date-time"},
+    "consent_state": {"enum": ["analytics_allowed", "essential_only"]},
+    "page_id": {"type": ["string", "null"], "maxLength": 128},
+    "campaign_id": {"type": ["string", "null"], "maxLength": 128}
+  }
+}
+
