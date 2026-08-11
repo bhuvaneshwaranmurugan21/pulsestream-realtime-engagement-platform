@@ -21,7 +21,7 @@ resource "aws_dynamodb_table_item" "active_pointer" {
   table_name = aws_dynamodb_table.generation.name
   hash_key   = aws_dynamodb_table.generation.hash_key
   item = jsonencode({
-    generation_id  = { S = "ACTIVE#engagement" }
+    generation_id   = { S = "ACTIVE#engagement" }
     pointer_version = { N = "0" }
   })
   lifecycle {
@@ -80,8 +80,8 @@ resource "aws_lambda_function" "register" {
   environment {
     variables = {
       GENERATION_TABLE = aws_dynamodb_table.generation.name
-      MANIFEST_BUCKET   = aws_s3_bucket.lake.id
-      REQUIRED_TABLES   = "curated_event,session_version,engagement_aggregate,correction_exception"
+      MANIFEST_BUCKET  = aws_s3_bucket.lake.id
+      REQUIRED_TABLES  = "curated_event,session_version,engagement_aggregate,correction_exception"
     }
   }
 }
