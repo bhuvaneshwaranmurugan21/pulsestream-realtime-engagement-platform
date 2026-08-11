@@ -9,23 +9,38 @@ on:
 
 permissions:
   contents: read
-  security-events: write
 
 jobs:
-  scan:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install --upgrade pip==26.1.2 setuptools==84.0.0
+      - run: pip install bandit==1.8.6
+      - run: bandit -q -r src spark_jobs lambdas scripts
+
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install --upgrade pip==26.1.2 setuptools==84.0.0
+      - run: pip install -e '.[aws,spark,analytics]' pip-audit==2.9.0
+      - run: pip-audit
+
+  secret-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-      - run: python -m pip install --upgrade pip==26.1.2
-      - run: pip install -e '.[aws,spark,analytics]' bandit==1.8.6 pip-audit==2.9.0
-      - run: bandit -q -r src spark_jobs lambdas scripts
-      - run: pip-audit
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
